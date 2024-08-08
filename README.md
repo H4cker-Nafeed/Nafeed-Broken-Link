@@ -10,6 +10,9 @@
 - Reports broken social media links specifically for platforms like Twitter (X.com), Facebook, LinkedIn, Instagram, GitHub, Reddit, Discord, and Pinterest.
 - Provides clear output and easy-to-read results.
 
+## Working
+https://github.com/user-attachments/assets/4e6d97c7-e321-4dab-bec1-0f3cb5fef1ea
+
 ## Installation
 
 To use the `Nafeed-Broken-Link` tool, follow these steps:
