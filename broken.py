@@ -4,6 +4,7 @@ from urllib.parse import urljoin, urlparse
 from termcolor import colored
 import pyfiglet
 import re
+import os
 import sys
 
 # Print banner with advanced font and colors
@@ -120,25 +121,17 @@ def crawl(domain):
             to_visit.extend(links)
 
 if __name__ == "__main__":
-    print_banner()
-    if len(sys.argv) > 1:
-        input_source = sys.argv[1]
-        if input_source == "file":
-            filename = input("Enter the filename containing the list of domains: ")
-            try:
-                with open(filename, 'r') as file:
-                    domains = [line.strip() for line in file if line.strip()]
-            except Exception as e:
-                print(colored(f"Error reading file {filename}: {e}", "red"))
-                sys.exit(1)
-        else:
-            domains = [input_source]
-    else:
-        domains = [input("Enter the domain or subdomain: ")]
+    try:
+        print_banner()
+        user_input = input("Enter the domain/subdomain or the path to a file containing a list of domains: ")
 
-    for domain in domains:
-        try:
-            crawl(domain)
-        except KeyboardInterrupt:
-            print(colored("Process interrupted by user.", "red"))
-            sys.exit(0)
+        if os.path.isfile(user_input):  # Check if the input is a file
+            with open(user_input, 'r') as file:
+                domains = file.read().splitlines()
+            for domain in domains:
+                crawl(domain)
+        else:
+            crawl(user_input)
+    except KeyboardInterrupt:
+        print("\nProcess interrupted by user. Exiting gracefully...")
+        sys.exit(0)
