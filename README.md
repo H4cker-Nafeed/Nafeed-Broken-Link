@@ -31,8 +31,9 @@ To use the `Nafeed-Broken-Link` tool, follow these steps:
 
 Install the necessary Python libraries using pip:  
 
-    ```bash
-    pip install requests beautifulsoup4
+     ```bash
+    pip install requests beautifulsoup4 urllib3 termcolor pyfiglet selenium
+    ```
 
 ## Usage
 
